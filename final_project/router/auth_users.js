@@ -53,7 +53,7 @@ regd_users.put("/auth/review/:isbn", (req, res) => {
 
   if(book){
     book.reviews[username] = review;
-    return res.status(200).json({ message: "Successfully added review: " + JSON.stringify(book) });
+    return res.status(200).json({ message: "Successfully added review", book});
   }else {
     return res.status(404).json({message: "No book found with this ISBN"});
   }
@@ -68,7 +68,7 @@ regd_users.delete("/auth/review/:isbn", (req, res) => {
 
   if(book){
     delete book.reviews[username]
-    return res.status(200).json({ message: "Successfully deleted review: " + JSON.stringify(book) });
+    return res.status(200).json({ message: "Successfully deleted review", book });
   }else {
     return res.status(404).json({message: "No book found with this ISBN"});
   }
